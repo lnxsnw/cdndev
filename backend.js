@@ -143,12 +143,19 @@ function list_files(path,files){
                  get_file(p, item, function(data){
                     markdown("#readme_md",data);
                 });
+            } else {
+                // No README.md, insert the spacer
+                $('#readme_md').before('<div class="spacer"></div>');
             }
             if(item.name == "HEAD.md"){
 	            get_file(p, item, function(data){
                     markdown("#head_md",data);
                 });
+            } else {
+                // No README.md, insert the spacer
+                $('#readme_md').before('<div class="spacer"></div>');
             }
+
             var ext = p.split('.').pop();
             html += `<li class="mdui-list-item file mdui-ripple" target="_blank"><a gd-type="${item.mimeType}" href="${p}" class="${c}">
 	          <div class="mdui-col-xs-12 mdui-col-sm-7 mdui-text-truncate">
