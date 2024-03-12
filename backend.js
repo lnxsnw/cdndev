@@ -146,7 +146,7 @@ function list_files(path,files){
                 });
             } else {
                 // No README.md, insert the spacer
-                $('#readme_md').before('<div class="spacer"></div>');
+                $('#readme_md').before('<div class="spacerx"></div>');
             }
             if(item.name == "HEAD.md"){
 	            get_file(p, item, function(data){
@@ -154,7 +154,7 @@ function list_files(path,files){
                 });
             } else {
                 // No README.md, insert the spacer
-                $('#readme_md').before('<div class="spacer"></div>');
+                $('#readme_md').before('<div class="spacerx"></div>');
             }
 
             var ext = p.split('.').pop();
