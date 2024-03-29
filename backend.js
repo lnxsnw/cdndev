@@ -63,25 +63,34 @@ function nav(path) {
     $('#nav').html(html);
 }
 
+// Breadcrumb
 function breadcrumb(path) {
-    var html = "";
-    var arr = path.trim('/').split('/');
-    var p = '/';
-    if (arr.length > 0) {
-      for (i in arr) {
-        var n = arr[i];
-        n = decodeURI(n);
-        p += n + '/';
-        if (n == '') {
-          break;
-        }
-        html += `<a class="folder" href="${p}">${n}</a>`;
-        if (i < arr.length - 1) {
-          html += `<i class="mdui-icon material-icons mdui-icon-dark folder" style="margin:0;">chevron_right</i>`;
-        }
+  var html = "<ul class='mdui-list'>"; // Start with an unordered list
+  var arr = path.trim('/').split('/');
+  var p = '/';
+
+  // Add "Root" as the first item
+  html += `<li class="mdui-list-item"><a class="folder" href="${p}">Root</a></li>`;
+
+  if (arr.length > 0) {
+    for (i in arr) {
+      var n = arr[i];
+      n = decodeURI(n);
+      p += n + '/';
+      if (n == '') {
+        break;
       }
+
+      // Add subsequent folder names with ">" separator
+      html += `<li class="mdui-list-item">
+                  <i class="mdui-icon material-icons mdui-icon-dark folder" style="margin:0;">chevron_right</i>
+                  <a class="folder" href="${p}">${n}</a>
+                </li>`;
     }
-    $('#breadcrumb').html(html);
+  }
+
+  html += "</ul>"; // Close the unordered list
+  $('#breadcrumb').html(html);
 }
 
 // File List
