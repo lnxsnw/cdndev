@@ -65,7 +65,7 @@ function nav(path) {
 
 // Breadcrumb
 function breadcrumb(path) {
-    var html = "<ul class='mdui-list mdui-list-dense mdui-row'>"; // Use mdui-row for horizontal layout
+ var html = ""; // Use mdui-row for horizontal layout
   var arr = path.trim('/').split('/');
   var p = '/';
 
@@ -82,10 +82,7 @@ function breadcrumb(path) {
       }
 
       // Add subsequent folder names with ">" separator
-      html += `<li class="mdui-list-item">
-                  <i class="mdui-icon material-icons mdui-icon-dark folder" style="margin:0;">chevron_right</i>
-                  <a class="folder" href="${p}">${n}</a>
-                </li>`;
+      html += `<i class="mdui-icon material-icons mdui-icon-dark folder" style="margin:0;">chevron_right</i><a class="folder" href="${p}">${n}</a>`;
     }
   }
 
