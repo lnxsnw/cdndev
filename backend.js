@@ -70,7 +70,7 @@ function breadcrumb(path) {
   var p = '/';
 
   // Add "Root" as the first item
-  html += `<li class="mdui-list-item"><a class="folder" href="${p}">Root</a></li>`;
+  html += `<a class="folder" href="${p}">Root</a>`;
 
   if (arr.length > 0) {
     for (i in arr) {
