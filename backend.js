@@ -304,18 +304,18 @@ function utc2localtime(utc_datetime) {
     // Offset Timezone (SG/MY/HK/ID/PH)
     var unixtimestamp = timestamp+8*60*60;
 
-    // Timestamp to 24Hr
-    var unixtimestamp = new Date(unixtimestamp*1000);
-    var year = 1900 + unixtimestamp.getYear();
-    var month = "0" + (unixtimestamp.getMonth() + 1);
-    var date = "0" + unixtimestamp.getDate();
-    var hour = "0" + unixtimestamp.getHours();
-    var minute = "0" + unixtimestamp.getMinutes();
-    var second = "0" + unixtimestamp.getSeconds();
-    return year + "-" + month.substring(month.length-2, month.length)  + "-" + date.substring(date.length-2, date.length)
-        + " " + hour.substring(hour.length-2, hour.length) + ":"
-        + minute.substring(minute.length-2, minute.length) + ":"
-        + second.substring(second.length-2, second.length);
+    // 12-hour poggers
+    var hours = unixtimestamp.getHours();
+    var minutes = "0" + unixtimestamp.getMinutes();
+    var seconds = "0" + unixtimestamp.getSeconds();
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+
+    return year + "-" + month.substring(month.length - 2, month.length) + "-" + date.substring(date.length - 2, date.length)
+        + " " + hours + ":"
+        + minutes.substring(minutes.length - 2, minutes.length) + ":"
+        + seconds.substring(seconds.length - 2, seconds.length) + " " + ampm;
 }
 
 // Size Conversion
