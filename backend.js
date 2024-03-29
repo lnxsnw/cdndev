@@ -14,17 +14,19 @@ document.write(`<style>.mdui-appbar .mdui-toolbar{height:56px;font-size:1pc}
 .mdui-toolbar>i:first-child{display:block}}</style>`);
 
 // Init
-function init(){
+function init() {
     document.siteName = $('title').html();
     $('body').addClass("mdui-theme-primary-blue-grey mdui-theme-accent-blue");
     var html = `
-<header class="mdui-appbar mdui-color-theme"> 
-   <div id="nav" class="mdui-toolbar mdui-container"> 
-   </div> 
-</header>
-<div id="content" class="mdui-container"> 
-</div>
-	`;
+    <header class="mdui-appbar mdui-appbar-fixed mdui-color-theme"> 
+      <div id="nav" class="mdui-toolbar mdui-container"> 
+      </div> 
+    </header>
+    <div id="breadcrumb" class="mdui-container">
+    </div>
+    <div id="content" class="mdui-container"> 
+    </div>
+    `;
     $('body').html(html);
 }
 
@@ -49,23 +51,33 @@ function title(path){
 }
 
 // Navigation Bar
-function nav(path){
+// Navigation Bar
+function nav(path) {
     var html = "";
     html += `<a href="/" class="mdui-typo-headline folder">${document.siteName}</a>`;
+    // ... (rest of the nav function remains the same)
+    $('#nav').html(html);
+}
+
+function breadcrumb(path) {
+    var html = "";
     var arr = path.trim('/').split('/');
     var p = '/';
-    if(arr.length > 0){
-        for(i in arr){
-            var n = arr[i];
-            n = decodeURI(n);
-            p += n+'/';
-            if(n == ''){
-                break;
-            }
-            html += `<i class="mdui-icon material-icons mdui-icon-dark folder" style="margin:0;">chevron_right</i><a class="folder" href="${p}">${n}</a>`;
+    if (arr.length > 0) {
+      for (i in arr) {
+        var n = arr[i];
+        n = decodeURI(n);
+        p += n + '/';
+        if (n == '') {
+          break;
         }
+        html += `<a class="folder" href="${p}">${n}</a>`;
+        if (i < arr.length - 1) {
+          html += `<i class="mdui-icon material-icons mdui-icon-dark folder" style="margin:0;">chevron_right</i>`;
+        }
+      }
     }
-    $('#nav').html(html);
+    $('#breadcrumb').html(html);
 }
 
 // File List
