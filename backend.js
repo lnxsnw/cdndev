@@ -65,7 +65,7 @@ function nav(path) {
 
 // Breadcrumb
 function breadcrumb(path) {
- var html = ""; // Use mdui-row for horizontal layout
+ var html = "mdui-toolbar mdui-container"; // Use mdui-row for horizontal layout
   var arr = path.trim('/').split('/');
   var p = '/';
 
