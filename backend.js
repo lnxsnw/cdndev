@@ -292,25 +292,33 @@ function file_image(path){
 function utc2localtime(utc_datetime) {
     var T_pos = utc_datetime.indexOf('T');
     var Z_pos = utc_datetime.indexOf('Z');
-    var year_month_day = utc_datetime.substr(0,T_pos);
-    var hour_minute_second = utc_datetime.substr(T_pos+1,Z_pos-T_pos-1);
-    var new_datetime = year_month_day+" "+hour_minute_second; // 2017-03-31 08:02:06
+    var year_month_day = utc_datetime.substr(0, T_pos);
+    var hour_minute_second = utc_datetime.substr(T_pos + 1, Z_pos - T_pos - 1);
+    var new_datetime = year_month_day + " " + hour_minute_second; // 2017-03-31 08:02:06
 
     // Timestamp Processing
     timestamp = new Date(Date.parse(new_datetime));
     timestamp = timestamp.getTime();
-    timestamp = timestamp/1000;
+    timestamp = timestamp / 1000;
 
     // Offset Timezone (SG/MY/HK/ID/PH)
-    var unixtimestamp = timestamp+8*60*60;
+    var unixtimestamp = timestamp + 8 * 60 * 60;
 
-    // 12-hour poggers
+    // Convert timestamp to Date object
+    var unixtimestamp = new Date(unixtimestamp * 1000);
+
+    // Timestamp to 12Hr with AM/PM
     var hours = unixtimestamp.getHours();
     var minutes = "0" + unixtimestamp.getMinutes();
     var seconds = "0" + unixtimestamp.getSeconds();
     var ampm = hours >= 12 ? 'PM' : 'AM';
     hours = hours % 12;
     hours = hours ? hours : 12; // the hour '0' should be '12'
+
+    // Formatted Date
+    var year = 1900 + unixtimestamp.getYear();
+    var month = "0" + (unixtimestamp.getMonth() + 1);
+    var date = "0" + unixtimestamp.getDate();
 
     return year + "-" + month.substring(month.length - 2, month.length) + "-" + date.substring(date.length - 2, date.length)
         + " " + hours + ":"
