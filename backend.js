@@ -22,13 +22,17 @@ function init() {
       <div id="nav" class="mdui-toolbar mdui-container"> 
       </div> 
     </header>
-    <div id="breadcrumb" class="mdui-container">
+  
+    <div id="breadcrumb-section" class="mdui-container">
+      <div id="breadcrumb">
+      </div>
     </div>
+  
     <div id="content" class="mdui-container"> 
     </div>
     `;
     $('body').html(html);
-}
+  }
 
 function render(path){
 	if(path.indexOf("?") > 0){
@@ -50,7 +54,6 @@ function title(path){
     $('title').html(document.siteName+' - '+path);
 }
 
-// Navigation Bar
 // Navigation Bar
 function nav(path) {
     var html = "";
