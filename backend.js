@@ -65,7 +65,7 @@ function nav(path) {
 
 // Breadcrumb
 function breadcrumb(path) {
-  var html = "<ul class='mdui-list'>"; // Start with an unordered list
+    var html = "<ul class='mdui-list mdui-list-dense mdui-row'>"; // Use mdui-row for horizontal layout
   var arr = path.trim('/').split('/');
   var p = '/';
 
