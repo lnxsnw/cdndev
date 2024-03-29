@@ -34,19 +34,20 @@ function init() {
     $('body').html(html);
   }
 
-function render(path){
-	if(path.indexOf("?") > 0){
-		path = path.substr(0,path.indexOf("?"));
-	}
+// Render
+function render(path) {
+    if (path.indexOf("?") > 0) {
+      path = path.substr(0, path.indexOf("?"));
+    }
     title(path);
     nav(path);
-    if(path.substr(-1) == '/'){
-    	list(path);
-    }else{
-	    file(path);
+    breadcrumb(path); // Call the breadcrumb function here!
+    if (path.substr(-1) == '/') {
+      list(path);
+    } else {
+      file(path);
     }
 }
-
 
 // Render title
 function title(path){
