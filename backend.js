@@ -1,6 +1,6 @@
 // Declare Assets and Things
 
-document.write('<link rel="stylesheet" href="//https://unpkg.com/mdui@2/mdui.css">');
+document.write('<link rel="stylesheet" href="//unpkg.com/mdui@2/mdui.css">');
 document.write('<script src="//cdn.jsdelivr.net/npm/markdown-it@10.0.0/dist/markdown-it.min.js"></script>');
 document.write(`<style>.mdui-appbar .mdui-toolbar{height:56px;font-size:1pc}
 .mdui-toolbar>*{padding:0 6px;margin:0 2px}
